@@ -3,7 +3,7 @@ from tkinter import Tk, BOTH, IntVar, LEFT
 from tkinter.ttk import Frame, Label, Scale, Style, Button
 
 PLAYER_ACTIVE = True
-EVENT_ACTIVE = False
+EVENT_ACTIVE = True
 EVENT_CHANCE = 10
 N_BANK = 100
 N_TERMS = 5
@@ -42,20 +42,20 @@ class Scaling_window(Frame):
 
 
 class Event:
-    def __init__(self, param, cost, minv, maxv, quest_line, ans, resp_Y, resp_N, res_negative, res_positive):
+    def __init__(self, param, cost, minv, maxv, quest_line, ans, resp_Y, resp_N, res_positive,res_negative):
         self.param, self.cost, self.minv, self.maxv, self.quest_line, self.ans, self.resp_Y, self.resp_N, = param, cost, minv, maxv, quest_line, ans, resp_Y, resp_N,
         self.res_negative, self.res_positive = res_negative, res_positive
 
     def playeventManagableCost(self, num):
         if input(self.quest_line) == self.ans:
             print(self.resp_Y)
-            CentralBank.banks[num].reserves -= self.cost
-            if randint(0, 100) > 50:
-                res = self.minv + (self.maxv - self.minv) * (randint(100) / 100)
+            CentralBank.banks[num].reserve -= self.cost
+            if randint(0, 100) > 30:
+                res = self.minv + (self.maxv - self.minv) * (randint(0, 100) / 100)
                 CentralBank.global_awareness -= res
-                print(self.res_positive.format(res))
+                print(self.res_positive, str(float(abs(res)) * 100), "%")
             else:
-                print(self.res_negative.format(res))
+                print(self.res_negative)
         else:
             print(self.resp_N)
 
@@ -63,10 +63,10 @@ class Event:
         if input(self.quest_line) == self.ans:
             print(self.resp_Y)
             CentralBank.global_awareness += self.cost
-            if randint(0, 100) > 50:
+            if randint(0, 100) > 30:
                 res = self.minv + (self.maxv - self.minv) * (randint(100) / 100)
                 CentralBank.banks[q] += res
-                print(self.res_positive.format(res))
+                print(self.res_positive, res)
             else:
                 print(self.res_negative)
         else:
@@ -74,18 +74,18 @@ class Event:
         # " в результате инвестиций было получено {0} рублей "
 
     def playeventUnmanagableCost(self, num):
-        CentralBank.banks[num].investments -= self.cost
+        CentralBank.banks[num].reserve -= self.cost
         print(self.quest_line)
         res = self.minv + (self.maxv - self.minv) * (randint(100) / 100)
         CentralBank.global_awareness += res
-        print(self.res_positive.format(res))
+        print(self.res_positive, res)
 
     def playeventUnmanagableAwareness(self, num):
         CentralBank.global_awareness += self.cost
         print(self.quest_line)
         res = (self.minv + (self.maxv - self.minv) * (randint(100) / 100))
         CentralBank.banks[num].investments += res
-        print(self.res_positive.format(res))
+        print(self.res_positive, res, "%")
 
 
 class CentralBank:
@@ -101,7 +101,11 @@ class CentralBank:
 
     @staticmethod
     def statestatus():
-        return("Инфляция на рынке %s, Глобальный уровень тревожности %s \n Общее число банков на рынке: %s. Общее число банков-банкротов %s\n"%((str(round(CentralBank.inflation*100,2))+"%"),(str(round(CentralBank.global_awareness*100,2))+"%"),len(CentralBank.banks),len(CentralBank.bankruptBanks)))
+        return (
+                    "Инфляция на рынке %s, Глобальный уровень тревожности %s \n Общее число банков на рынке: %s. Общее число банков-банкротов %s\n" % (
+            (str(round(CentralBank.inflation * 100, 2)) + "%"),
+            (str(round(CentralBank.global_awareness * 100, 2)) + "%"), len(CentralBank.banks),
+            len(CentralBank.bankruptBanks)))
 
     @staticmethod
     def count_gains():
@@ -117,7 +121,7 @@ class CentralBank:
             banks_gain += i.reserve + i.investments
 
         if PLAYER_ACTIVE:
-            print("Счёт игрока: ",CentralBank.banks[0].reserve + CentralBank.banks[0].investments)
+            print("Счёт игрока: ", CentralBank.banks[0].reserve + CentralBank.banks[0].investments)
         return banks_gain, investors_gain
 
 
@@ -165,7 +169,8 @@ class Bank:
         for i, inv in enumerate(self.investors):
             inv.gain = -100
             CentralBank.bankruptInvestors.append(self.investors[i])
-        CentralBank.global_awareness = min(100/100, randint(int(CentralBank.global_awareness*100), int(CentralBank.global_awareness*110))/100)
+        CentralBank.global_awareness = min(100 / 100, randint(int(CentralBank.global_awareness * 100),
+                                                              int(CentralBank.global_awareness * 110)) / 100)
         CentralBank.bankruptBanks.append(self)
         return True
 
@@ -194,7 +199,7 @@ class Investor:
     def awareness_count(self, bank):
         return self.deposit / (
                 Bank.default_value_sum / Bank.default_investors_count) * CentralBank.inflation * (
-                       (CentralBank.global_awareness)) / bank.rate_on_depo
+                   (CentralBank.global_awareness)) / bank.rate_on_depo
 
 
 def initWorld():
@@ -216,17 +221,23 @@ def initWorld():
         b.investors = sorted(b.investors, reverse = True)
         # print(min(b.investors))
     CentralBank.EventsMan.append(
-        Event(1, 10000, 0.2, 0.3, 'вы можете инвестировать в детский сад', 'Y', 'инвиситиции приняты',
-              'инвестиции неприняты', 'позитивный', 'негативный'))
+        Event(1, 10000, 0.2, 0.3, 'вы можете инвестировать 10000 рублей в детский сад Y/N', 'Y', 'инвеситиции приняты',
+              'инвестиции не приняты', 'Вы повысили доверие людей к  банковской системе на ', 'Реакции не последовало'))
     CentralBank.EventsMan.append(
-        Event(1, -5000, -0.6, -0.4, 'у вас есть возможность продать свои акции за 5000', 'Y', ' принято', 'непринято',
-              'позитивный', 'негативный'))
+        Event(1, -5000, -0.6, -0.4, 'у вас есть возможность продать свои акции за 5000 Y/N', 'Y', ' акции проданы',
+              'акции не проданы', 'Вы понизили доверие к банковской системе на ', 'Реакции не последовало'))
     CentralBank.EventsMan.append(
-        Event(1, 4356, 0.4, 0.56, 'вы можете купить акции за 4356 ', 'Y', 'принято', 'непринято', 'позитивный',
-              'негативный'))
+        Event(1, 4356, 0.04, 0.05, 'вы можете купить акции за 4356 Y/N', 'Y', 'вы купили акции', 'акции не куплены',
+              'вы купили акции и повысили надежность системы на ', 'Реакции на покупку не последовало'))
     CentralBank.EventsMan.append(
-        Event(1, 11234, 0.76, 0.12, 'вы можете продать свои ценные бумаги за 11234', 'Y', 'принято', 'непринято',
-              'позитивный', 'негативный'))
+        Event(1, -11234, -0.7, -0.1, 'вы можете продать свои ценные бумаги за 11234 Y/N', 'Y', 'бумаги проданы',
+              'бумаги не проданы', 'Вы продали свои бумаги понизив надежность банковской системы на ',
+              'Реакции не последовало'))
+    CentralBank.EventsUnman.append(Event(1,0,0.05,0.08,"Известный бизнесмен вложился выкупил долговые обязательства банков-должников",'', '',
+              '', 'Глобальная встревоженность понижена на')
+    CentralBank.EventsUnman.append(
+        Event(1, 10000, 0.05, 0.08, "Сто тысяч рублей были востребованны правительством для поддержания бюджетной политики ", '', '',
+              '', 'Глобальная встревоженность понижена на')
 
 
 def main():
@@ -238,11 +249,11 @@ def main():
     initWorld()  # инициализация
     # root.mainloop()
     for term in range(N_TERMS):
-        CentralBank.inflation += randint(10,20)/100  # рост инфляции каждый "цикл"
+        CentralBank.inflation += randint(10, 20) / 100  # рост инфляции каждый "цикл"
         for q, bank in enumerate(CentralBank.banks):
             CentralBank.banks[q].term_sur += 1
             if EVENT_ACTIVE and q == PLAYER_BANK_N:
-                CentralBank.EventsMan = shuffle(CentralBank.EventsMan)
+                shuffle(CentralBank.EventsMan)
                 for event in CentralBank.EventsMan:
                     if randint(0, 100) < EVENT_CHANCE:
                         if event.param == 1:
@@ -293,14 +304,14 @@ def main():
                 s = CentralBank.banks[q].reserve + CentralBank.banks[q].investments  # все активы банка
                 s /= (CentralBank.inflation + 1)
                 CentralBank.banks[q].reserve, CentralBank.banks[q].investments = s * bank.rate_on_reserves, s * (
-                            1 - bank.rate_on_reserves)
+                        1 - bank.rate_on_reserves)
                 # пересчитываем капитал банка (собрали все деньги и поделили по ставке)
                 if PLAYER_BANK_N == q and PLAYER_ACTIVE:
                     print("Произошла выплата ", round(dropped_depos, 2),
                           "руб. депозитов", dropped_inv, "чел. ушедшим вкладчикам")
                     print("После выплаты процентов по вкладам и получения дохода от инвестиций у банка осталось",
                           round(s, 2), "руб. в активах",
-                          f"из них{round(CentralBank.banks[q].investments,2)} руб. в сбережениях, а{round(CentralBank.banks[q].reserve,2)} руб. в резервах")
+                          f"из них{round(CentralBank.banks[q].investments, 2)} руб. в сбережениях, а{round(CentralBank.banks[q].reserve, 2)} руб. в резервах")
                 if CentralBank.banks[q].investments < 0 or CentralBank.banks[q].reserve < 0:
                     for inv in bank.investors:
                         CentralBank.banks[q].gain -= inv.deposit

@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4d178542-d05d-4910-aa9e-d743ef178bd1" name="Default Changelist" comment="" />
+    <list default="true" id="4d178542-d05d-4910-aa9e-d743ef178bd1" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -146,7 +149,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670058866564</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="03.12 Почти всё 211">
+      <created>1670062149275</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1670062149275</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -170,6 +180,7 @@
     <MESSAGE value="30.11 (3)" />
     <MESSAGE value="03.12 Почти всё" />
     <MESSAGE value="03.12 Почти всё 2" />
-    <option name="LAST_COMMIT_MESSAGE" value="03.12 Почти всё 2" />
+    <MESSAGE value="03.12 Почти всё 211" />
+    <option name="LAST_COMMIT_MESSAGE" value="03.12 Почти всё 211" />
   </component>
 </project>
