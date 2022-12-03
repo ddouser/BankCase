@@ -139,8 +139,12 @@ class Investor:
         self.deposit += depo
 
     def awareness_count(self, bank):
+<<<<<<< Updated upstream
         return self.deposit / (
                 Bank.default_value_sum / Bank.default_investors_count) * CentralBank.inflation * ((CentralBank.global_awareness)/100) / bank.rate_on_depo
+=======
+        return self.deposit / (Bank.default_value_sum / Bank.default_investors_count) * CentralBank.inflation * CentralBank.global_awareness / bank.rate_on_depo
+>>>>>>> Stashed changes
 
 
 def initWorld():
@@ -158,6 +162,7 @@ def initWorld():
         b.investors[2].addDepo((Bank.default_value_sum - s) / 3)
         b.investors = sorted(b.investors, reverse = True)
         # print(min(b.investors))
+
 
 
 initWorld()  # инициализация
