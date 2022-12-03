@@ -42,7 +42,7 @@ class Scaling_window(Frame):
 
 
 class Event:
-    def __init__(self, param, cost, minv, maxv, quest_line, ans, resp_Y, resp_N, res_positive,res_negative):
+    def __init__(self, param, cost, minv, maxv, quest_line, ans, resp_Y, resp_N, res_positive, res_negative):
         self.param, self.cost, self.minv, self.maxv, self.quest_line, self.ans, self.resp_Y, self.resp_N, = param, cost, minv, maxv, quest_line, ans, resp_Y, resp_N,
         self.res_negative, self.res_positive = res_negative, res_positive
 
@@ -76,14 +76,14 @@ class Event:
     def playeventUnmanagableCost(self, num):
         CentralBank.banks[num].reserve -= self.cost
         print(self.quest_line)
-        res = self.minv + (self.maxv - self.minv) * (randint(100) / 100)
+        res = self.minv + (self.maxv - self.minv) * (randint(0,100) / 100)
         CentralBank.global_awareness += res
         print(self.res_positive, res)
 
     def playeventUnmanagableAwareness(self, num):
         CentralBank.global_awareness += self.cost
         print(self.quest_line)
-        res = (self.minv + (self.maxv - self.minv) * (randint(100) / 100))
+        res = (self.minv + (self.maxv - self.minv) * (randint(0,100) / 100))
         CentralBank.banks[num].investments += res
         print(self.res_positive, res, "%")
 
@@ -102,7 +102,7 @@ class CentralBank:
     @staticmethod
     def statestatus():
         return (
-                    "Инфляция на рынке %s, Глобальный уровень тревожности %s \n Общее число банков на рынке: %s. Общее число банков-банкротов %s\n" % (
+                "Инфляция на рынке %s, Глобальный уровень тревожности %s \n Общее число банков на рынке: %s. Общее число банков-банкротов %s\n" % (
             (str(round(CentralBank.inflation * 100, 2)) + "%"),
             (str(round(CentralBank.global_awareness * 100, 2)) + "%"), len(CentralBank.banks),
             len(CentralBank.bankruptBanks)))
@@ -233,11 +233,10 @@ def initWorld():
         Event(1, -11234, -0.7, -0.1, 'вы можете продать свои ценные бумаги за 11234 Y/N', 'Y', 'бумаги проданы',
               'бумаги не проданы', 'Вы продали свои бумаги понизив надежность банковской системы на ',
               'Реакции не последовало'))
-    CentralBank.EventsUnman.append(Event(1,0,0.05,0.08,"Известный бизнесмен вложился выкупил долговые обязательства банков-должников",'', '',
-              '', 'Глобальная встревоженность понижена на')
     CentralBank.EventsUnman.append(
-        Event(1, 10000, 0.05, 0.08, "Сто тысяч рублей были востребованны правительством для поддержания бюджетной политики ", '', '',
-              '', 'Глобальная встревоженность понижена на')
+        Event(1, 0, 0.05, 0.08, "Известный бизнесмен вложился выкупил долговые обязательства банков-должников", '', '',
+              '', 'Глобальная встревоженность понижена на',""))
+    CentralBank.EventsUnman.append(Event(1, 10000, 0.05, 0.08,"Сто тысяч рублей были востребованны правительством для поддержания бюджетной политики ",'', '', '', 'Глобальная встревоженность понижена на',""))
 
 
 def main():
@@ -339,4 +338,4 @@ if __name__ == '__main__':
     replay = "Y"
     while (replay != ""):
         main()
-        replay = input("Чтобы играть снова введите не пустую строку")
+        replay = input("Чтобы играть снова введите непустую строку")
