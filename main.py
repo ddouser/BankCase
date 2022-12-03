@@ -77,7 +77,7 @@ class Event:
         CentralBank.banks[num].reserve -= self.cost
         print(self.quest_line)
         res = self.minv + (self.maxv - self.minv) * (randint(0,100) / 100)
-        CentralBank.global_awareness += res
+        CentralBank.global_awareness -= res
         print(self.res_positive, res)
 
     def playeventUnmanagableAwareness(self, num):
@@ -89,7 +89,7 @@ class Event:
 
 
 class CentralBank:
-    rate_on_reserves = 0.0
+    rate_on_reserves = 0.3
     banks = []
     EventsUnman = []
     EventsMan = []
@@ -155,12 +155,12 @@ class Bank:
             if inv.awareness > randint(50, 100):
 
                 self.reserve -= inv.deposit
-                self.investors[i].gain = inv.deposit
+                self.investors[i].gain += inv.deposit
                 CentralBank.droppedInvestors.append(self.investors[i])
                 self.investors.pop(i)
                 count_dropped_inv += 1
                 count_droped_depos += inv.deposit
-                if self.reserve < 0:
+                if self.reserve <= 0:
                     self.bankrupt()
                     return True, count_dropped_inv, count_droped_depos
         return False, count_dropped_inv, count_droped_depos
@@ -251,21 +251,7 @@ def main():
         CentralBank.inflation += randint(10, 20) / 100  # рост инфляции каждый "цикл"
         for q, bank in enumerate(CentralBank.banks):
             CentralBank.banks[q].term_sur += 1
-            if EVENT_ACTIVE and q == PLAYER_BANK_N:
-                shuffle(CentralBank.EventsMan)
-                for event in CentralBank.EventsMan:
-                    if randint(0, 100) < EVENT_CHANCE:
-                        if event.param == 1:
-                            event.playeventManagableCost(q)
-                        else:
-                            event.playeventManagableAwareness(q)
-                CentralBank.EventsUnmman = shuffle(CentralBank.EventsUnman)
-                for event in CentralBank.EventsUnman:
-                    if randint(0, 100) < EVENT_CHANCE:
-                        if event.param == 1:
-                            event.playeventUnmanagableCost(q)
-                        else:
-                            event.playeventUnmanagableAwareness(q)
+
             if q == PLAYER_BANK_N and PLAYER_ACTIVE:
                 root = Tk()
                 print("Статус на рынке:")
@@ -281,8 +267,10 @@ def main():
                                                             CentralBank.rate_on_reserves)
                 CentralBank.banks[q].rate_on_depo = max(float(int(ROD_scale.var.get()) / 100), 0.01)
 
-                print("In ", term, " term player has chosen RoR and RoD: ", CentralBank.banks[q].rate_on_reserves,
+                print("В периоде №", term, "  Игрок выбрал ставку резервирования и ставку по вкладам: ", CentralBank.banks[q].rate_on_reserves,
                       CentralBank.banks[q].rate_on_depo)
+                if CentralBank.rate_on_reserves == CentralBank.banks[q].rate_on_reserves:
+                    print("Процент резервирования по требованию  центробанка")
             is_bakcrupt, dropped_inv, dropped_depos = bank.dropDepos()
             if is_bakcrupt is True:  # если банк обанкротился
                 if q == PLAYER_BANK_N:
@@ -290,11 +278,12 @@ def main():
                         CentralBank.banks[q].gain -= inv.deposit
                     bank.bankrupt()
                     CentralBank.banks.pop(q)
-                    print("Банк игрока обанкротился на сроке #", term, "После выплаты ", round(dropped_depos, 2),
+                    print("Банк игрока обанкротился на сроке №", term, "После выплаты ", round(dropped_depos, 2),
                           "руб. депозитов", dropped_inv, "чел. ушедших вкладчиков")
                     return
 
             else:
+
                 for i, inv in enumerate(bank.investors):
                     CentralBank.banks[q].reserve -= inv.deposit * bank.rate_on_depo  # выплачиваем проценты вкладчикам
                     CentralBank.banks[q].investors[i].deposit *= (bank.rate_on_depo + 1)
@@ -310,7 +299,7 @@ def main():
                           "руб. депозитов", dropped_inv, "чел. ушедшим вкладчикам")
                     print("После выплаты процентов по вкладам и получения дохода от инвестиций у банка осталось",
                           round(s, 2), "руб. в активах",
-                          f"из них{round(CentralBank.banks[q].investments, 2)} руб. в сбережениях, а{round(CentralBank.banks[q].reserve, 2)} руб. в резервах")
+                          f"из них {round(CentralBank.banks[q].investments, 2)} руб. в инвестициях, а {round(CentralBank.banks[q].reserve, 2)} руб. в резервах")
                 if CentralBank.banks[q].investments < 0 or CentralBank.banks[q].reserve < 0:
                     for inv in bank.investors:
                         CentralBank.banks[q].gain -= inv.deposit
@@ -319,8 +308,23 @@ def main():
                     if q == PLAYER_BANK_N:
                         print("Банк игрока обанкротился при выплате процента по вкладам")
                         return
+            if EVENT_ACTIVE and q == PLAYER_BANK_N:
+                shuffle(CentralBank.EventsMan)
+                for event in CentralBank.EventsMan:
+                    if randint(0, 100) < EVENT_CHANCE:
+                        if event.param == 1:
+                            event.playeventManagableCost(q)
+                        else:
+                            event.playeventManagableAwareness(q)
+                shuffle(CentralBank.EventsUnman)
+                for event in CentralBank.EventsUnman:
+                    if randint(0, 8) < EVENT_CHANCE:
+                        if event.param == 1:
+                            event.playeventUnmanagableCost(q)
+                        else:
+                            event.playeventUnmanagableAwareness(q)
 
-    print("gains", CentralBank.count_gains())
+    #print("gains", CentralBank.count_gains())
     SPAM_PRINT = False
     if SPAM_PRINT:
         for bank in CentralBank.banks:
