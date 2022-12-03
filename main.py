@@ -260,10 +260,11 @@ def main():
                 root = Tk()
                 print("Статус на рынке:")
                 print(CentralBank.statestatus())
-                root.title(str("".join(("Parameters for ", str(term), " term/ROR Принять".split("/")[0]))))
-                ROR_scale = Scaling_window("".join(("Parameters for ", str(term), "term/ROR Принять")),
+                print("Установите Ставку резервирования (ROR) и Ставку процента по вкладам (ROD)")
+                root.title(str("".join(("Параметры для срока  ", str(term), " / Принять".split("/")[0]))))
+                ROR_scale = Scaling_window("".join(("Параметры для срока ", str(term), "/ROR Принять")),
                                            CentralBank.rate_on_reserves, 100)
-                ROD_scale = Scaling_window("".join(("Parameters for ", str(term), "term/ROD Принять")), 1, 100)
+                ROD_scale = Scaling_window("".join(("Параметры для срока ", str(term), " /ROD Принять")), 1, 100)
                 root.geometry("550x100+300+300")
                 root.mainloop()
                 CentralBank.banks[q].rate_on_reserves = max(float(int(ROR_scale.var.get()) / 100),
