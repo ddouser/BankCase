@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4d178542-d05d-4910-aa9e-d743ef178bd1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-    </list>
+    <list default="true" id="4d178542-d05d-4910-aa9e-d743ef178bd1" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -141,7 +139,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670058731827</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="03.12 Почти всё 2">
+      <created>1670058866564</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1670058866564</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -164,6 +169,7 @@
     <MESSAGE value="Merge branch 'main' of https://github.com/ddouser/BankCase&#10;&#10;# Conflicts:&#10;#&#9;main.py" />
     <MESSAGE value="30.11 (3)" />
     <MESSAGE value="03.12 Почти всё" />
-    <option name="LAST_COMMIT_MESSAGE" value="03.12 Почти всё" />
+    <MESSAGE value="03.12 Почти всё 2" />
+    <option name="LAST_COMMIT_MESSAGE" value="03.12 Почти всё 2" />
   </component>
 </project>
