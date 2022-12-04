@@ -1,3 +1,9 @@
+"""
+Case GAME By Developers:
+Pichuev D. 90 %
+Trushkin N. 40 %
+#Place  for your ads#
+"""
 from random import randint, shuffle
 from tkinter import Tk, BOTH, IntVar, LEFT
 from tkinter.ttk import Frame, Label, Scale, Style, Button
@@ -10,7 +16,7 @@ N_TERMS = 20
 
 
 class Scaling_window(Frame):
-
+    """interface class"""
     def __init__(self, st, minval, maxval):
         super().__init__()
 
@@ -42,6 +48,7 @@ class Scaling_window(Frame):
 
 
 class Event:
+    """Event class"""
     def __init__(self, param, cost, minv, maxv, quest_line, ans, resp_Y, resp_N, res_positive, res_negative):
         self.param, self.cost, self.minv, self.maxv, self.quest_line, self.ans, self.resp_Y, self.resp_N, = param, cost, minv, maxv, quest_line, ans, resp_Y, resp_N,
         self.res_negative, self.res_positive = res_negative, res_positive
@@ -89,6 +96,7 @@ class Event:
 
 
 class CentralBank:
+    """Main Management Class"""
     rate_on_reserves = 0.3
     banks = []
     EventsUnman = []
@@ -101,6 +109,7 @@ class CentralBank:
 
     @staticmethod
     def statestatus():
+        """creating status report for player"""
         return (
                 "Инфляция на рынке %s, Глобальный уровень тревожности %s \n Общее число банков на рынке: %s. Общее число банков-банкротов %s\n" % (
             (str(round(CentralBank.inflation * 100, 2)) + "%"),
@@ -109,6 +118,7 @@ class CentralBank:
 
     @staticmethod
     def count_gains():
+        """Counting gains from the game"""
         investors_gain = 0
         banks_gain = 0
         for i in CentralBank.bankruptInvestors:
@@ -126,6 +136,7 @@ class CentralBank:
 
 
 class Bank:
+    """Bank player class"""
     default_value_sum = 212 * (10 ** 6)
     default_investors_count = 2 * (10 ** 3)
 
@@ -176,6 +187,7 @@ class Bank:
 
 
 class Investor:
+    """Investor player class"""
     def __init__(self, depo):
         self.deposit = depo
         self.awareness = 1
@@ -203,6 +215,7 @@ class Investor:
 
 
 def initWorld():
+    """init function"""
     Bank.banks = []
     for i in range(N_BANK):
         b = Bank((randint(int(CentralBank.rate_on_reserves * 100), 100) / 100))
@@ -219,7 +232,7 @@ def initWorld():
         b.investors[1].addDepo((Bank.default_value_sum - s) / 3)
         b.investors[2].addDepo((Bank.default_value_sum - s) / 3)
         b.investors = sorted(b.investors, reverse = True)
-        # print(min(b.investors))
+    """Event declaration below"""
     CentralBank.EventsMan.append(
         Event(1, 10000, 0.2, 0.3, 'Вы можете инвестировать 10000 рублей в детский сад Y/N', 'Y', 'инвеситиции приняты',
               'инвестиции не приняты', 'Вы повысили доверие людей к  банковской системе на ', 'Реакции не последовало'))
@@ -271,13 +284,8 @@ def initWorld():
 
 
 def main():
-    # root = Tk()
-    # ROR_scale = Scaling_window("ROR", CentralBank.rate_on_reserves, 100)
-    # ROD_scale = Scaling_window("ROD", 1, 100)
-    # root.geometry("250x100+300+300")
-
-    initWorld()  # инициализация
-    # root.mainloop()
+    """main loop class"""
+    initWorld()  # init
     for term in range(N_TERMS):
         CentralBank.inflation += randint(10, 20) / 100  # рост инфляции каждый "цикл"
         for q, bank in enumerate(CentralBank.banks):
@@ -355,22 +363,9 @@ def main():
                         else:
                             event.playeventUnmanagableAwareness(q)
 
-    #print("gains", CentralBank.count_gains())
-    SPAM_PRINT = False
-    if SPAM_PRINT:
-        for bank in CentralBank.banks:
-            print(bank.rate_on_reserves, len(bank.investors))
-
-        print(len(CentralBank.banks))
-
-        for bank in CentralBank.bankruptBanks:
-            print(bank.rate_on_reserves, len(bank.investors))
-
-        print(len(CentralBank.bankruptBanks))
-
-
 if __name__ == '__main__':
     replay = "Y"
+    """Everybody wants to replay, aye!"""
     while (replay != ""):
         main()
         replay = input("Чтобы играть снова введите непустую строку")

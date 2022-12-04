@@ -182,7 +182,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670167802106</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Push main. Nikita added Events. Wish him best regards">
+      <created>1670168969647</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1670168969647</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -199,6 +206,8 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
     <MESSAGE value="26.11" />
     <MESSAGE value="26.11(2)" />
     <MESSAGE value="30.11(1)" />
@@ -210,6 +219,10 @@
     <MESSAGE value="03.12 добавил ивенты" />
     <MESSAGE value="03.12 добавил ивенты (DB)" />
     <MESSAGE value="Push main?" />
-    <option name="LAST_COMMIT_MESSAGE" value="Push main?" />
+    <MESSAGE value="Push main. Nikita added Events. Wish him best regards" />
+    <option name="LAST_COMMIT_MESSAGE" value="Push main. Nikita added Events. Wish him best regards" />
+    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
 </project>
