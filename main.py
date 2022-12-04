@@ -1,5 +1,5 @@
 """
-Case GAME By Developers:
+Case GAME (04.12.2022) By Developers:
 Pichuev D. 90 %
 Trushkin N. 40 %
 #Place  for your ads#
