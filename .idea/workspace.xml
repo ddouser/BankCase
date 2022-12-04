@@ -4,7 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="4d178542-d05d-4910-aa9e-d743ef178bd1" name="Default Changelist" comment="" />
+=======
+    <list default="true" id="4d178542-d05d-4910-aa9e-d743ef178bd1" name="Default Changelist" comment="03.12 добавил ивенты (DB) деб">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+>>>>>>> 8aa99812ecf0e43478c69fe5f44f518d5c7f77cb
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -121,6 +129,56 @@
       <option name="project" value="LOCAL" />
       <updated>1669785112919</updated>
     </task>
+    <task id="LOCAL-00008" summary="30.11 (3)">
+      <created>1669796949300</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1669796949300</updated>
+    </task>
+    <task id="LOCAL-00009" summary="30.11 (3)">
+      <created>1670045472586</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1670045472586</updated>
+    </task>
+    <task id="LOCAL-00010" summary="03.12 Почти всё">
+      <created>1670058731827</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1670058731827</updated>
+    </task>
+    <task id="LOCAL-00011" summary="03.12 Почти всё 2">
+      <created>1670058866564</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1670058866564</updated>
+    </task>
+    <task id="LOCAL-00012" summary="03.12 Почти всё 211">
+      <created>1670062149275</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1670062149275</updated>
+    </task>
+    <task id="LOCAL-00013" summary="03.12 добавил ивенты">
+      <created>1670087988812</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1670087988812</updated>
+    </task>
+    <task id="LOCAL-00014" summary="03.12 добавил ивенты (DB)">
+      <created>1670088165828</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1670088165828</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -143,5 +201,12 @@
     <MESSAGE value="26.11(2)" />
     <MESSAGE value="30.11(1)" />
     <MESSAGE value="Merge branch 'main' of https://github.com/ddouser/BankCase&#10;&#10;# Conflicts:&#10;#&#9;main.py" />
+    <MESSAGE value="30.11 (3)" />
+    <MESSAGE value="03.12 Почти всё" />
+    <MESSAGE value="03.12 Почти всё 2" />
+    <MESSAGE value="03.12 Почти всё 211" />
+    <MESSAGE value="03.12 добавил ивенты" />
+    <MESSAGE value="03.12 добавил ивенты (DB)" />
+    <option name="LAST_COMMIT_MESSAGE" value="03.12 добавил ивенты (DB)" />
   </component>
 </project>
