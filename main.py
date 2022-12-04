@@ -139,12 +139,9 @@ class Investor:
         self.deposit += depo
 
     def awareness_count(self, bank):
-<<<<<<< Updated upstream
         return self.deposit / (
                 Bank.default_value_sum / Bank.default_investors_count) * CentralBank.inflation * ((CentralBank.global_awareness)/100) / bank.rate_on_depo
-=======
         return self.deposit / (Bank.default_value_sum / Bank.default_investors_count) * CentralBank.inflation * CentralBank.global_awareness / bank.rate_on_depo
->>>>>>> Stashed changes
 
 
 def initWorld():
@@ -162,12 +159,6 @@ def initWorld():
         b.investors[2].addDepo((Bank.default_value_sum - s) / 3)
         b.investors = sorted(b.investors, reverse = True)
         # print(min(b.investors))
-
-    CentralBank.EventsMan.append(Event(1, -11234, -0.76, -0.12, 'вы можете продать свои ценные бумаги за 11234', 'Y', 'принято', 'непринято', 'позитивный','негативный'))CentralBank.EventsMan.append(Event(1, 10000, 0.2, 0.3, 'вы можете инвестировать в детский сад', 'Y', 'инвиситиции приняты','инвестиции неприняты', 'позитивный', 'негативный'))
-    CentralBank.EventsMan.append(Event(1, -5000, -0.6, -0.4, 'у вас есть возможность продать свои акции за 5000', 'Y', ' принято', 'непринято','позитивный', 'негативный'))
-    CentralBank.EventsMan.append(Event(1, 4356, 0.4, 0.56, 'вы можете купить акции за 4356 ', 'Y', 'принято', 'непринято', 'позитивный', 'негативный'))
-    CentralBank.EventsMan.append(Event(1, -11234, -0.76, -0.12, 'вы можете продать свои ценные бумаги за 11234', 'Y', 'принято', 'непринято', 'позитивный','негативный'))
-
     CentralBank.EventsMan.append(Event(1, 10000, 0.2, 0.3, 'вы можете инвестировать 10000 рублей в детский сад Y/N', 'Y', 'инвеситиции приняты','инвестиции не приняты', 'Вы повысили доверие людей к банковской системе на ', 'Реакции не последовало'))
     CentralBank.EventsMan.append(Event(1, -11234, -0.7, -0.1, 'вы можете продать свои ценные бумаги за 11234 Y/N', 'Y', 'бумаги проданы','бумаги не проданы', 'Вы продали свои бумаги понизив надежностьь банковской системы на ','реакции не последовало'))
     CentralBank.EventsMan.append(Event(1, -5000, -0.6, -0.4, 'у вас есть возможность продать свои акции за 5000 Y/N', 'Y', ' акции проданы','акции не проданы', 'Вы понизили доверие к банковской системе на ', 'Реакции не последовало'))
