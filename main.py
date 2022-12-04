@@ -6,7 +6,7 @@ PLAYER_ACTIVE = True
 EVENT_ACTIVE = True
 EVENT_CHANCE = 10
 N_BANK = 100
-N_TERMS = 5
+N_TERMS = 20
 
 
 class Scaling_window(Frame):
@@ -53,7 +53,7 @@ class Event:
             if randint(0, 100) > 30:
                 res = self.minv + (self.maxv - self.minv) * (randint(0, 100) / 100)
                 CentralBank.global_awareness -= res
-                print(self.res_positive, str(float(abs(res)) * 100), "%")
+                print(self.res_positive, round((float(abs(res)) * 100),2) * 100), "%")
             else:
                 print(self.res_negative)
         else:
@@ -65,7 +65,7 @@ class Event:
             CentralBank.global_awareness += self.cost
             if randint(0, 100) > 30:
                 res = self.minv + (self.maxv - self.minv) * (randint(100) / 100)
-                CentralBank.banks[q] += res
+                CentralBank.banks[num] += res
                 print(self.res_positive, res)
             else:
                 print(self.res_negative)
@@ -78,14 +78,14 @@ class Event:
         print(self.quest_line)
         res = self.minv + (self.maxv - self.minv) * (randint(0,100) / 100)
         CentralBank.global_awareness -= res
-        print(self.res_positive, res)
+        print(self.res_positive, round((float(abs(res)) * 100),2),"%")
 
     def playeventUnmanagableAwareness(self, num):
         CentralBank.global_awareness += self.cost
         print(self.quest_line)
         res = (self.minv + (self.maxv - self.minv) * (randint(0,100) / 100))
         CentralBank.banks[num].investments += res
-        print(self.res_positive, res, "%")
+        print(self.res_positive, "%")
 
 
 class CentralBank:
