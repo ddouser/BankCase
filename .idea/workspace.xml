@@ -5,14 +5,25 @@
   </component>
   <component name="ChangeListManager">
 <<<<<<< HEAD
+<<<<<<< HEAD
     <list default="true" id="4d178542-d05d-4910-aa9e-d743ef178bd1" name="Default Changelist" comment="" />
 =======
     <list default="true" id="4d178542-d05d-4910-aa9e-d743ef178bd1" name="Default Changelist" comment="03.12 добавил ивенты (DB) деб">
+=======
+<<<<<<< Updated upstream
+    <list default="true" id="4d178542-d05d-4910-aa9e-d743ef178bd1" name="Default Changelist" comment="">
+>>>>>>> Nikita
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+<<<<<<< HEAD
 >>>>>>> 8aa99812ecf0e43478c69fe5f44f518d5c7f77cb
+=======
+=======
+    <list default="true" id="4d178542-d05d-4910-aa9e-d743ef178bd1" name="Default Changelist" comment="" />
+>>>>>>> Stashed changes
+>>>>>>> Nikita
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -33,6 +44,7 @@
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
+<<<<<<< HEAD
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -43,6 +55,17 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
+=======
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$USER_HOME$/PycharmProjects/pythonProject" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+  </component>
+>>>>>>> Nikita
   <component name="RunManager">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python">
       <module name="BankCase" />
@@ -78,7 +101,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1669179915816</updated>
+<<<<<<< HEAD
       <workItem from="1670087361618" duration="3374000" />
+=======
+      <workItem from="1669785333323" duration="2086000" />
+      <workItem from="1669971366027" duration="445000" />
+>>>>>>> Nikita
     </task>
     <task id="LOCAL-00001" summary="26.11">
       <created>1669437262703</created>
@@ -208,5 +236,8 @@
     <MESSAGE value="03.12 добавил ивенты" />
     <MESSAGE value="03.12 добавил ивенты (DB)" />
     <option name="LAST_COMMIT_MESSAGE" value="03.12 добавил ивенты (DB)" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/BankCase$main.coverage" NAME="main Coverage Results" MODIFIED="1669781481229" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
