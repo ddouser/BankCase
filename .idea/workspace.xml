@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4d178542-d05d-4910-aa9e-d743ef178bd1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="4d178542-d05d-4910-aa9e-d743ef178bd1" name="Default Changelist" comment="Push main. Nikita added some more Events. Wish him best regards">
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -220,7 +219,8 @@
     <MESSAGE value="03.12 добавил ивенты (DB)" />
     <MESSAGE value="Push main?" />
     <MESSAGE value="Push main. Nikita added Events. Wish him best regards" />
-    <option name="LAST_COMMIT_MESSAGE" value="Push main. Nikita added Events. Wish him best regards" />
+    <MESSAGE value="Push main. Nikita added some more Events. Wish him best regards" />
+    <option name="LAST_COMMIT_MESSAGE" value="Push main. Nikita added some more Events. Wish him best regards" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
