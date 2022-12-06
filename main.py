@@ -379,7 +379,7 @@ def main():
                             event.playeventManagableAwareness(q)
                 shuffle(CentralBank.EventsUnman)
                 for event in CentralBank.EventsUnman:
-                    if randint(0, 8) < EVENT_CHANCE:
+                    if randint(0, 100) < EVENT_CHANCE:
                         if event.param == 1:
                             event.playeventUnmanagableCost(q)
                         else:
