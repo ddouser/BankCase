@@ -84,7 +84,7 @@ class Event:
         CentralBank.banks[num].reserve -= self.cost
         print(self.quest_line)
         res = self.minv + (self.maxv - self.minv) * (randint(0,100) / 100)
-        CentralBank.global_awareness -= res
+        CentralBank.global_awareness = min(0, CentralBank.global_awareness - res)
         print(self.res_positive, round((float(abs(res)) * 100),2),"%")
 
     def playeventUnmanagableAwareness(self, num):
