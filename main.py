@@ -225,7 +225,7 @@ def initWorld():
     CentralBank.global_awareness = 0.40
     CentralBank.inflation = 0.1
 
-    CentralBank..banks = []
+    CentralBank.banks = []
     for i in range(N_BANK):
         b = Bank((randint(int(CentralBank.rate_on_reserves * 100), 100) / 100))
         CentralBank.banks.append(b)
