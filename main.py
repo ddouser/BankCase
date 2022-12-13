@@ -59,7 +59,7 @@ class Event:
             CentralBank.banks[num].reserve -= self.cost
             if randint(0, 100) > 30:
                 res = self.minv + (self.maxv - self.minv) * (randint(0, 100) / 100)
-                CentralBank.global_awareness -= res
+                CentralBank.global_awareness = min(0, CentralBank.global_awareness - res)
                 print(self.res_positive, round((float(abs(res)) * 100), 2) * 100, "%")
             else:
                 print(self.res_negative)
