@@ -216,7 +216,16 @@ class Investor:
 
 def initWorld():
     """init function"""
-    Bank.banks = []
+    CentralBank.banks = []
+    CentralBank.EventsUnman = []
+    CentralBank.EventsMan = []
+    CentralBank.bankruptBanks = []
+    CentralBank.bankruptInvestors = []
+    CentralBank.droppedInvestors = []
+    CentralBank.global_awareness = 0.40
+    CentralBank.inflation = 0.1
+
+    CentralBank..banks = []
     for i in range(N_BANK):
         b = Bank((randint(int(CentralBank.rate_on_reserves * 100), 100) / 100))
         CentralBank.banks.append(b)
@@ -377,6 +386,7 @@ def main():
                             event.playeventManagableCost(q)
                         else:
                             event.playeventManagableAwareness(q)
+                        break
                 shuffle(CentralBank.EventsUnman)
                 for event in CentralBank.EventsUnman:
                     if randint(0, 100) < EVENT_CHANCE:
@@ -384,7 +394,7 @@ def main():
                             event.playeventUnmanagableCost(q)
                         else:
                             event.playeventUnmanagableAwareness(q)
-
+                        break
 if __name__ == '__main__':
     replay = "Y"
     """Everybody wants to replay, aye!"""
